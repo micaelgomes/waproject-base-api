@@ -25,7 +25,11 @@
     "postseed:make": "yarn eslint \"./src/modules/database/migrations/**/*.ts\" --fix",
     "docker:release": "yarn docker:build && yarn docker:push",
     "docker:build": "docker build -t waproject/waproject-base-api -f docker/prod/Dockerfile .",
-    "docker:push": "docker push waproject/waproject-base-api"
+    "docker:push": "docker push waproject/waproject-base-api",
+    "docker:release:staging": "yarn docker:build:staging && yarn docker:push:staging",
+    "docker:build:staging": "docker build -t waproject/waproject-base-api:staging -f docker/prod/Dockerfile .",
+    "docker:push:staging": "docker push waproject/waproject-base-api:staging",
+    "deploy-server": "scripts/deploy-server.sh"
   },
   "husky": {
     "hooks": {
