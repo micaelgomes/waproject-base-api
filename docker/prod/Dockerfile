@@ -20,6 +20,7 @@ COPY --from=0 /app/package.json /app
 COPY --from=0 /app/.env /app
 COPY --from=0 /app/knexfile.js /app
 COPY --from=0 /app/yarn.lock /app
+COPY --from=0 /app/src/assets /app/bin/assets
 
 RUN set -x \
     && yarn install --prod \
