@@ -57,6 +57,7 @@ export class UserService {
     const { password, hash } = await this.passwordService.generatePassword();
     model.password = hash;
 
+    console.log(model);
     const user = await this.userRepository.insert(model);
     await this.mailService.send(user.email, 'Bem Vindo!', 'user-create', { ...user, password });
 

@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Query } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, NotFoundException, Post, Query } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { AuthRequired, CurrentUser } from 'modules/common/guards/token';
 import { ICurrentUser } from 'modules/common/interfaces/currentUser';
@@ -32,6 +32,15 @@ export class UserController {
     };
 
     return roles.map(role => ({ role, ...rolesDescriptions[role] })).filter(role => role);
+  }
+
+  @Get('current')
+  @ApiResponse({ status: 200, type: User })
+  public async currentUser(@CurrentUser() currentUser: ICurrentUser) {
+    const user = this.userRepository.findById(currentUser.id);
+    if (!user) throw new NotFoundException();
+
+    return user;
   }
 
   @Get(':userId')

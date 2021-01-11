@@ -5,7 +5,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "",
+    "url": "https://github.com/micaelgomes/waproject-base-api",
     "seed": "git@bitbucket.org:waproject/waproject-base-api-api.git"
   },
   "scripts": {
