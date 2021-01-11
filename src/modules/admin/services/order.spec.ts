@@ -1,4 +1,3 @@
-// import { NotFoundException } from '@nestjs/common';
 import { IOrder } from 'modules/database/interfaces/order';
 
 import { OrderRepository } from '../repositories/order';
